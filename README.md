@@ -14,7 +14,7 @@ Los papers tokenizados y encapsulados en un **NFT** serán almacenados en una b�
 Los actores podrán incorporar una imagen o foto en su perfil, y hacer una descripción de actividad profesional.
 
 ### Diagrama de Secuencia: Crea Universal Profile
-::: mermaid
+```mermaid
 sequenceDiagram
 Investigador->>UI: Metadatos
 Note right of UI: Nombre, descripción, profileImage, backgroundImage, tags, links, email
@@ -26,7 +26,7 @@ API Blockchain->>API Blockchain: Genera y envía correo para autenticación
 Note right of API Blockchain: Usar servicio de Sendgrid en Azure
 API Blockchain-->>UI: Ok
 UI-->>Investigador: Despliega nueva UP y recibe correo
-:::
+```
 
 ### Diagrama de Secuencia: Login
 ::: mermaid
