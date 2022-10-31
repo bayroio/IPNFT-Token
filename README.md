@@ -29,7 +29,7 @@ UI-->>Investigador: Despliega nueva UP y recibe correo
 ```
 
 ### Diagrama de Secuencia: Login
-::: mermaid
+```mermaid
 sequenceDiagram
 Investigador->>UI: Accede a su UP
 Note right of Investigador: Desde su email inbox el investigador dió click en la liga de su UP
@@ -37,17 +37,17 @@ UI->>API Blockchain: Lee UP asociada a la Ethereum address
 API Blockchain->>Ledger: Llama al Smart Contract para leer los metadatos
 Ledger-->> API Blockchain: Metadatos
 API Blockchain-->>UI: Metadatos
-:::
+```
 
 ### Diagrama de Secuencia: Logout
-::: mermaid
+```mermaid
 sequenceDiagram
 Investigador->>UI: Logut
 Note right of UI: Se borra el cache de esa página
-:::
+```
 
 ### Diagrama de Secuencia: Tokeniza Paper (NFGT)
-::: mermaid
+```mermaid
 sequenceDiagram
 Investigador->>UI: Está en su UP
 Investigador->>UI: Crear nuevo Token/Activo
@@ -59,4 +59,4 @@ API Blockchain->>Ledger: Crea nuevo NFT y le asignar como dueño el UP que lo es
 Ledger-->>API Blockchain: Ok
 API Blockchain-->>UI: Ok
 UI->>UI: Despliega UP actualizado con el nuevo paper tokenizado (NFT)
-:::
+```
