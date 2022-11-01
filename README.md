@@ -86,3 +86,35 @@ se comercialice la **IP-NFT**:
         - El porcentaje de regalías que se le concederán a la **DTT**.
 - El proceso de minting del **IP-NFT** deberá ser firmado criptográficamente tanto por la **DTT** y el **investigador** o la **Empresa de BCT**.
     - Esto se debe a que existe una cesión de derechos de explotación comercial.
+
+### Diagrama de Secuencia: Asignación de Permisos sobre NFT (Paper Tokenizado)
+```mermaid
+sequenceDiagram
+Investigador->>UI: Selecciona una NFT representando uno de sus papers tokenizados
+Investigador->>UI: Selecciona el UP de la DTT
+Investigador->>UI: Asigna permisos de ownership a la DTT sobre el NFT seleccionado previamente
+UI->>API Blockchain: Asigna ownership a DTT (address de NFT)
+API Blockchain->>Ledger: Asigna nuevo ownership al paper tokenizado en el smart contract del NFT
+API Blockchain->>API Blockchain: Genera y envía correo a la DTT
+Note right of API Blockchain: Usar servicio de Sendgrid en Azure
+API Blockchain-->>UI: Ok
+UI-->>Investigador: Permiso asignado
+```
+
+### Diagrama de Secuencia: Tokenización Propiedad Intelectual
+```mermaid
+sequenceDiagram
+DTT->>UI: Accede a la página del paper tokenizado (NFT)
+Note right of DTT: Desde su email inbox el investigador dió click en la liga del NFT
+UI->>UI: Despliega página web del paper tokenizado (NFT)
+Note right of DTT: La DTT revisa información del NFT
+DTT->>UI: Metadatos y Documentos de soporte
+Note right of UI: Nombre, simbolo, precio, Descripción general, patente, derecho de explotación comercial, permisos de uso, distribución de la compensación del token (% regalias del IP-NFGT)
+DTT->>UI: Minting IP-NFT
+Note right of DTT: Se firma criptográficamente la transacción
+UI->>API Blockchain: Miniting nuevo IP-NFT (metadatos, documentos soporte, firma criptográfica de la DTT)
+API Blockchain->>Ledger: Se crea un nuevo IP-NFT (propiedad intelectual tokenizada)
+Note right of DTT: El dueño de está nueva IP-NFT es la DTT
+Ledger-->>API Blockchain: Ethereum address del nuevo IP-NFT + Metadatos
+API Blockchaini-->>UI: Ethereum address del nuevo IP-NFT + Metadatos
+```
