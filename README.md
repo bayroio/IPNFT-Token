@@ -118,3 +118,30 @@ Note right of DTT: El dueño de está nueva IP-NFT es la DTT
 Ledger-->>API Blockchain: Ethereum address del nuevo IP-NFT + Metadatos
 API Blockchaini-->>UI: Ethereum address del nuevo IP-NFT + Metadatos
 ```
+
+## Marketplace de Propiedad Intelectual Tokenizada
+Actores que podrán interactuar con este módulo:
+- Cualquier persona que cree su perfil
+
+Este módulo funcional será una aplicación web, en dónde se desplegarán todas las **IP-NFT** con una descripción corta y su nombre, así como el precio.
+
+El actor deberá tener en su wallet suficiente cryptos para pagar la IP-NFT y el gas asociado a la transacción.
+
+La transacción de compra de un IP-NFT deberá ser firmada criptográficamente.
+
+### Diagrama de Secuencia: Busqueda y compra de IP-NFT
+```mermaid
+sequenceDiagram
+Empresa de BCT->>UI Marketplace: Busca IP-NFT
+Note right of Empresa de BCT: La búsqueda puede ser visual en la lista de todas IP-NFTs o bien, usando el buscador de la página del Marketplace.
+Empresa de BCT->>UI Marketplace: Selecciona el IP-NFT deseado
+Note right of UI Marketplace: El Marketplace muestra toda la información del IP-NFT.
+Note right of UI Marketplace: La Empresa de BCT revisa toda la información del IP-NFT.
+Empresa de BCT->>UI Marketplace: Compra IP-NFT
+Note right of Empresa de BCT: Se firma la transacción. Se debe tener los fondos suficientes para pagar la IP-NFT y el gas de la transacción
+UI Marketplace->>API Blockchain: Cambiar ownership del IP-NFT
+API Blockchain->>Ledger: Cambia ownership en Smart Contract del IP-NFT
+Ledger-->>API Blockchain: Ok
+API Blockchain-->>UI Marketplace: Ok
+
+```
